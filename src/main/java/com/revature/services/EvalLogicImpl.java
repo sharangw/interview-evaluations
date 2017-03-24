@@ -88,10 +88,14 @@ public class EvalLogicImpl implements EvalLogic {
 	@Transactional
 	public EvalComment createComment(EvalComment comment, Integer evalId) {
 		
+		System.out.println("HERE");
+		
 		comment.setEval(dao.findOne(evalId));
 
         validation.validateEvalExists(evalId);
 		validation.validateEvalCommentFields(comment);
+	
+		
 		
 		return commentDao.save(comment);
 	}
