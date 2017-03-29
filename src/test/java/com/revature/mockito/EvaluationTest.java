@@ -35,14 +35,14 @@ public class EvaluationTest {
 	@Mock
 	private EvalLogicImpl evalTest = Mockito.mock(EvalLogicImpl.class);
 	
-	@BeforeClass 
-	public static void start() {
-		
-		char c = '\101';
-		System.out.println(c);
-		System.out.println("");
-		
-	}
+//	@BeforeClass 
+//	public static void start() {
+//		
+//		char c = '\101';
+//		System.out.println(c);
+//		System.out.println("");
+//		
+//	}
 
 	@Test
 	public void testCreateEval() {
