@@ -7,6 +7,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -34,6 +35,15 @@ public class EvaluationTest {
 	@Mock
 	private EvalLogicImpl evalTest = Mockito.mock(EvalLogicImpl.class);
 	
+	@BeforeClass 
+	public static void start() {
+		
+		char c = '\101';
+		System.out.println(c);
+		System.out.println("");
+		
+	}
+
 	@Test
 	public void testCreateEval() {
 		
@@ -111,15 +121,6 @@ public class EvaluationTest {
 		
 	}
 	
-	private Eval updatingEval() {
-		
-		Eval eval = creatingEval();
-		
-		eval.setWeek(4);
-		
-		return eval;
-	}
-	
 	private EvalComment updatingComment() {
 		
 		EvalComment comment = creatingComment();
@@ -127,6 +128,15 @@ public class EvaluationTest {
 		comment.setCommentText("Updated");
 		
 		return comment;
+	}
+	
+	private Eval updatingEval() {
+		
+		Eval eval = creatingEval();
+		
+		eval.setWeek(4);
+		
+		return eval;
 	}
 	
 	private EvalComment creatingComment() {
@@ -139,7 +149,7 @@ public class EvaluationTest {
 
 	private Eval creatingEval() {
 		
-		// Creating an evaluation - requires other dependent objects to be created first:		
+		// Creating an evaluation - requires other dependent objects to be created first:
 		Eval eval = new Eval();
 		
 		// Date
@@ -189,4 +199,6 @@ public class EvaluationTest {
 		
 		return eval;
 	}
+	
+	
 }
