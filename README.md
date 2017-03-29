@@ -13,3 +13,6 @@ Interview Evaluations provides the ability for Revature trainers to assess the i
 
 ## Contributing
 Please see our docs for [how to contribute](CONTRIBUTING.md).
+
+## Jenkins
+
