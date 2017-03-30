@@ -16,4 +16,5 @@ Please see our docs for [how to contribute](CONTRIBUTING.md).
 
 ## Jenkins
 * Testing
+* Changed jenkins url to http:/sharang-wakankar-jenkins/github-webhook/
 
