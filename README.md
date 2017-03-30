@@ -18,4 +18,5 @@ Please see our docs for [how to contribute](CONTRIBUTING.md).
 * Testing
 * Changed jenkins url to http:/sharang-wakankar-jenkins/github-webhook/
 * Deleted Test 1 - was broken
+* Remove credentials from github server
 
