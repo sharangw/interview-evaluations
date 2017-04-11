@@ -28,21 +28,17 @@ import com.revature.domain.Subject;
 import com.revature.services.EvalLogic;
 import com.revature.services.EvalLogicImpl;
 
+/**
+ * Create mock objects for Evaluation Logic at runtime and test them, simulating the database.
+ * @author sharang
+ *
+ */
 //@RunWith attaches a runner with the test class to initialize the test data
 @RunWith(MockitoJUnitRunner.class)
 public class EvaluationTest {
 
 	@Mock
 	private EvalLogicImpl evalTest = Mockito.mock(EvalLogicImpl.class);
-	
-//	@BeforeClass 
-//	public static void start() {
-//		
-//		char c = '\101';
-//		System.out.println(c);
-//		System.out.println("");
-//		
-//	}
 
 	@Test
 	public void testCreateEval() {
@@ -53,8 +49,10 @@ public class EvaluationTest {
 		System.out.println(eval+"\n");
 		
 		when(evalTest.createEval(eval)).thenReturn(eval);
-	
-		assertEquals(evalTest.createEval(eval), eval);
+		Eval createdEval = evalTest.createEval(eval);
+		System.out.println(createdEval+"\n");
+		
+		assertEquals(createdEval, eval);
 	}
 	
 	@Test
@@ -66,10 +64,12 @@ public class EvaluationTest {
 		System.out.println(comment+"\n");
 		
 		when(evalTest.createComment(comment, creatingEval().getId())).thenReturn(comment);
+		EvalComment createdComment = evalTest.createComment(comment, creatingEval().getId());
+		System.out.println(createdComment+"\n");
 		
-		assertEquals(evalTest.createComment(comment, creatingEval().getId()), comment);		
+		assertEquals(createdComment, comment);		
 	}
-	
+
 	@Test
 	public void testUpdateEval() {
 		
@@ -79,8 +79,10 @@ public class EvaluationTest {
 		System.out.println(uEval+"\n");
 	
 		when(evalTest.updateEval(uEval, uEval.getId())).thenReturn(uEval);
+		Eval updatedEval = evalTest.updateEval(uEval, uEval.getId());
+		System.out.println(updatedEval+"\n");
 		
-		assertEquals(evalTest.updateEval(uEval, uEval.getId()), uEval);		
+		assertEquals(updatedEval, uEval);		
 	}
 	
 	@Test
@@ -92,8 +94,10 @@ public class EvaluationTest {
 		System.out.println(uComment+"\n");
 		
 		when(evalTest.updateComment(uComment, uComment.getId())).thenReturn(uComment);
+		EvalComment updatedComment = evalTest.updateComment(uComment, uComment.getId());
+		System.out.println(updatedComment+"\n");
 		
-		assertEquals(evalTest.updateComment(uComment, uComment.getId()), uComment);
+		assertEquals(updatedComment, uComment);
 	}
 	
 	@Test
@@ -101,51 +105,37 @@ public class EvaluationTest {
 		
 		int evalId = creatingEval().getId();  
 				
+		System.out.println("Deleted Eval:");
+		System.out.println(evalId+"\n");
+		
 		String deleted = "{\"text\":\"Evaluation: " + evalId + " - DELETED\"}";
 		
 		when(evalTest.deleteEval(evalId)).thenReturn(deleted);
+		String deletedEval = evalTest.deleteEval(evalId);
+		System.out.println(deletedEval+"\n");
 		
-		assertEquals(evalTest.deleteEval(evalId), deleted);
+		assertEquals(deletedEval, deleted);
 	}
-	
+
 	@Test
 	public void testDeleteComment() {
 		
 		int commentId = creatingComment().getId();
 		
+		System.out.println("Deleted Comment:");
+		System.out.println(commentId+"\n");
+		
 		String deleted = "{\"text\":\"Evaluation Comment: " + commentId + " - DELETED\"}";
 		
 		when(evalTest.deleteComment(commentId)).thenReturn(deleted);
+		String deletedComment = evalTest.deleteComment(commentId);
+		System.out.println(deletedComment+"\n");
 		
-		assertEquals(evalTest.deleteComment(commentId), deleted);
+		assertEquals(deletedComment, deleted);
 		
 	}
 	
-	private EvalComment updatingComment() {
-		
-		EvalComment comment = creatingComment();
-		
-		comment.setCommentText("Updated");
-		
-		return comment;
-	}
-	
-	private Eval updatingEval() {
-		
-		Eval eval = creatingEval();
-		
-		eval.setWeek(4);
-		
-		return eval;
-	}
-	
-	private EvalComment creatingComment() {
-		
-		EvalComment comment = new EvalComment("No Comment", creatingEval());
-		comment.setId(100);
-		
-		return comment;	 
-	}
+	// Creating:
 
 	private Eval creatingEval() {
 		
@@ -200,5 +190,32 @@ public class EvaluationTest {
 		return eval;
 	}
 	
+	private EvalComment creatingComment() {
+		
+		EvalComment comment = new EvalComment("No Comment", creatingEval());
+		comment.setId(100);
+		
+		return comment;	 
+	}
+	
+	// Updating:
+	
+	private Eval updatingEval() {
+		
+		Eval eval = creatingEval();
+		
+		eval.setWeek(4);
+		
+		return eval;
+	}
+	
+	private EvalComment updatingComment() {
+		
+		EvalComment comment = creatingComment();
+		
+		comment.setCommentText("Updated");
+		
+		return comment;
+	}
 	
 }
