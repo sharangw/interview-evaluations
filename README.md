@@ -14,10 +14,5 @@ Interview Evaluations provides the ability for Revature trainers to assess the i
 ## Contributing
 Please see our docs for [how to contribute](CONTRIBUTING.md).
 
-## Jenkins
-* Testing
-* Changed jenkins url to http:/sharang-wakankar-jenkins/github-webhook/
-* Deleted Test 1 - was broken
-* Remove credentials from github server
-* Change Jenkins url to include ip
+
 
